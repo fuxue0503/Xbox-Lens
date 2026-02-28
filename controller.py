@@ -51,7 +51,7 @@ BTN_VIEW = 6   # BACK
 BTN_MENU = 7   # START
 
 # Timeframes to cycle through with LB/RB
-TIMEFRAMES = ["1", "5", "15", "60", "D"]
+TIMEFRAMES = ["15", "60", "120", "240", "480", "D", "W"]
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
@@ -60,7 +60,7 @@ class TradingViewController:
         self.keyboard = KeyboardController()
         self.mouse = MouseController()
         
-        self.tf_index = 2 # Default to 15
+        self.tf_index = 0 # Default to 15
         self.scroll_accum_x = 0.0
         self.scroll_accum_y = 0.0
         
