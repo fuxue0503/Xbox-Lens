@@ -187,9 +187,9 @@ class TradingViewController:
     def _update_ui(self):
         if self.status_label and self.overlay_root:
             if self.is_active:
-                self.status_label.config(text="● XBOX LENS: ACTIVE", fg="#00FF00")
+                self.status_label.config(text="● XBOX 镜头: 已激活", fg="#00FF00")
             else:
-                self.status_label.config(text="⏸ XBOX LENS: PAUSED", fg="#FF8800")
+                self.status_label.config(text="⏸ XBOX 镜头: 已暂停", fg="#FF8800")
             self.overlay_root.update_idletasks()
 
     def _start_move(self, event):
@@ -233,7 +233,7 @@ class TradingViewController:
             widget.bind("<B1-Motion>", self._on_motion)
 
         # Status
-        self.status_label = tk.Label(self.overlay_root, text="⏸ XBOX LENS: PAUSED", 
+        self.status_label = tk.Label(self.overlay_root, text="⏸ XBOX 镜头: 已暂停", 
                                      font=("Segoe UI", 12, "bold"), fg="#FF8800", bg="#1A1A1A")
         self.status_label.pack(pady=(15, 10))
         bind_drag(self.status_label)
@@ -245,15 +245,15 @@ class TradingViewController:
         
         # Controls Mapping
         mappings = [
-            ("L-Stick", "Mouse Move (Exp)"),
-            ("R-Stick", "Scroll & Zoom"),
-            ("A", "Left Click (Place)"),
-            ("X", "Alt+T (Trendline)"),
-            ("Y", "Alt+H (Horizontal)"),
-            ("B", "Alt+R (Reset Chart)"),
-            ("Start", "Alt+P (Log Scale)"),
-            ("LB/RB", "Cycle Timeframes"),
-            ("D-Pad \u2191\u2193", "Watchlist Up/Down"),
+            ("左摇杆", "鼠标移动 (指数级)"),
+            ("右摇杆", "滚动和缩放"),
+            ("A 键", "左键点击 (放置点位)"),
+            ("X 键", "Alt+T (趋势线)"),
+            ("Y 键", "Alt+H (水平线)"),
+            ("B 键", "Alt+R (重置图表)"),
+            ("菜单键", "Alt+P (对数坐标)"),
+            ("LB/RB 键", "循环切换时间周期"),
+            ("方向键 ↑↓", "自选列表 上/下"),
         ]
         
         mapping_frame = tk.Frame(self.overlay_root, bg="#1A1A1A")
@@ -276,12 +276,12 @@ class TradingViewController:
         hotkey_frame.pack(fill=tk.X, padx=20, pady=(5, 5))
         bind_drag(hotkey_frame)
         
-        shortcut_lbl = tk.Label(hotkey_frame, text="[Home] toggle state", font=("Segoe UI", 9, "italic"), fg="#777777", bg="#1A1A1A")
+        shortcut_lbl = tk.Label(hotkey_frame, text="[Home] 激活 / [End] 暂停", font=("Segoe UI", 11, "bold"), fg="#FFFFFF", bg="#1A1A1A")
         shortcut_lbl.pack(side=tk.LEFT)
         bind_drag(shortcut_lbl)
         
         # Close Button
-        close_btn = tk.Button(hotkey_frame, text="    STOP & EXIT    ", font=("Segoe UI", 8, "bold"), 
+        close_btn = tk.Button(hotkey_frame, text="    停止并退出    ", font=("Segoe UI", 8, "bold"), 
                               bg="#551111", fg="white", bd=0, cursor="hand2", 
                               command=self._ui_close_clicked)
         close_btn.pack(side=tk.RIGHT)
